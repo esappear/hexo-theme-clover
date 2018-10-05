@@ -18,6 +18,16 @@ theme: clover
 npm install hexo-renderer-sass --save
 ```
 ## Features
+### Page excerpt and photos
+You can set an excerpt or photos in `Front-matter`.
+```
+---
+layout: post
+title: my_post_title
+excerpt: my_post_excerpt
+photos: [my_photo_url]
+---
+```
 ### Tags page.
 - Create a page named tags
   ```
