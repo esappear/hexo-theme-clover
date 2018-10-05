@@ -1,0 +1,18 @@
+// 左侧固定，右侧自适应的布局
+@mixin left-right-layout($leftWidth, $divide:0, $align:middle) {
+  font-size: 0;
+  line-height: 0;
+  > .leftWrap {
+    display: inline-block;
+    vertical-align: $align;
+    width: $leftWidth;
+  }
+  > .rightWrap {
+    display: inline-block;
+    vertical-align: $align;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: -$leftWidth;
+    padding-left: $leftWidth + $divide;
+  }
+}

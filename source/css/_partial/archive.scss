@@ -1,0 +1,40 @@
+.archive {
+  padding: 80px 160px;
+  background-color: white;
+}
+
+.archive-category {
+  > .title {
+    font-size: 28px;
+    line-height: 40px;
+    font-weight: 600;
+  }
+  > .menu {
+    margin-bottom: 80px;
+    > li {
+      margin-top: 15px;
+      font-size: 16px;
+      line-height: 30px;
+      > a {
+        display: flex;
+        > span {
+          flex: 1;
+        }
+        &:hover {
+          opacity: 1;
+          > span {
+            color: #f0534e;
+          }
+        }
+      }
+      > span {
+        opacity: .45;
+      }
+    }
+  }
+  &:last-child {
+    > .menu {
+      margin-bottom: 0;
+    }
+  }
+}

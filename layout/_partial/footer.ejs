@@ -1,0 +1,11 @@
+<footer id="footer" class="f-cf">
+  <%= theme.mail %>
+  <% if (theme.social) { %>
+    <% _.forEach(theme.social, function(value, key) { %>
+      <% if (value) { %>
+        · <a href="<%= value %>" target="_blank" class="nav-icn"><%= key %></a>
+      <% } %>
+    <% }); %>
+  <% } %>
+  <span class="f-fr"><%= theme.copyright %></span>
+</footer>

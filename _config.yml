@@ -1,0 +1,44 @@
+# Custom nav
+nav:
+  title: "Clover Tuan"
+
+favicon: ""
+
+# Custom background
+background:
+  color: "#eff0f6"
+  image: ""
+
+# Social media
+social:
+  GitHub: https://github.com/cloverTuan
+  Dribbble: 
+  Behance: 
+  Lofter: 
+  Instagram: 
+
+# Custom footer
+mail: d.guangying@foxmail.com
+copyright: All rights reserved @Clover Tuan
+
+# Custom menu. You can specific the path or the card style (only useful for category page).
+# Two kinds of card style: 'project-card', 'article-card',
+# Never mind the name.
+menu:
+  # Project:
+  #   path: /categories/Projects
+  #   card: project-card
+  # Stuffs:
+  #   path: /tags/Stuffs
+  #   card: article-card
+  Home: /
+  Archive: /archives
+  About: /about
+
+# Specific a default category of the index page.
+# home_category: Projects
+
+node_sass:
+  outputStyle: nested
+  precision: 5
+  sourceComments: false

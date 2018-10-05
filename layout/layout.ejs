@@ -1,0 +1,17 @@
+<%- partial('_partial/head') %>
+<body style="
+<% if (theme.background.image) { %>
+  background: url(<%= theme.background.image %>) center center no-repeat;
+  background-size: contain;
+<% } %>
+<% if (theme.background.color) { %>
+  background-color: <%= theme.background.color %>
+<% } %>
+">
+  <div id="container">
+    <%- partial('_partial/nav') %>
+    <div id="main"><%- body %></div>
+    <%- partial('_partial/footer') %>
+  </div>
+</body>
+</html>

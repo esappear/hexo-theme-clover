@@ -1,0 +1,13 @@
+@import 'mixins.scss';
+@import 'reset.css';
+@import 'layout.scss';
+@import 'global.scss';
+@import 'fonts.scss';
+@import 'functions.scss';
+
+@import '_partial/nav.scss';
+@import '_partial/footer.scss';
+@import '_partial/project-card.scss';
+@import '_partial/article.scss';
+@import '_partial/archive.scss';
+@import '_partial/about.scss';

@@ -1,0 +1,113 @@
+$brand-color: #f0534e;
+.article {
+  margin: 64px 0 80px;
+  padding: 80px 100px 0;
+  background-color: white;
+  color: #333;
+  font-size: 16px;
+  line-height: 30px;
+  > .title {
+    font-size: 28px;
+    line-height: 40px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  > .sub {
+    opacity: .5;
+    margin-bottom: 20px;
+  }
+  > .content {
+    padding-bottom: 64px;
+    h1, h2, h3, h4, h5 {
+      font-size:20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    p {
+      font-size: 16px;
+      line-height: 30px;
+      margin-bottom: 15px;
+    }
+
+    pre, .highlight {
+      overflow: auto;;
+      padding: 0;
+      margin-bottom: 15px;
+      color: #333;
+      background: #f8f8f8;
+      .gutter {
+        text-align: right;
+        pre {
+          background-color: #f0f0f0;
+          padding: 0 10px;
+        }
+      }
+      .code {
+        padding: 0 10px;
+      }
+    }
+
+    ul, ol {
+      margin: 15px 0;
+      > li {
+        padding-left: 30px;
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 15px;
+          margin-top: -3px;
+          width: 6px;
+          height: 6px;
+          border-radius: 100%;
+          background-color: #444;
+        }
+      }
+    }
+    a {
+      color: $brand-color;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    figure > img {
+      display: block;
+    }
+
+    figcaption {
+      font-size: 14px;
+    }
+
+    blockquote {
+      border-left: 4px solid #ddd;
+      color: #7a7a7a;
+      border-left: 5px solid #ccc;
+      padding-left: 15px;
+      font-size: 16px;
+      margin-bottom: 15px;
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    * {
+      max-width: 100%;
+    }
+  }
+  > footer {
+    padding: 40px 0;
+    border-top: solid 1px #eee;
+    > .link {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    padding: 20px;
+  }
+}

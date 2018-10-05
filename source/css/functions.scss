@@ -1,0 +1,17 @@
+.f-fl {
+  float: left;
+}
+
+.f-fr {
+  float: right;
+}
+
+.f-cf {
+  &::after {
+    content: '';
+    display:block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+  }
+}

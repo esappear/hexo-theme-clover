@@ -1,0 +1,5 @@
+<% page.posts.each(function(post){ %>
+  <% if (!theme.home_category || (post.categories.data.length && theme.home_category === post.categories.data[0].name)) { %>
+    <%- partial('_partial/project-card', { post: post }) %>
+  <% } %>
+<% }) %>

@@ -1,0 +1,53 @@
+#nav {
+  margin-bottom: 64px;
+  > .title {
+    display: block;
+    margin-bottom: 25px;
+    font-size: 40px;
+    line-height: 53px;
+    color: #333;
+    font-family: MaturaScriptCapitals;
+    &:hover {
+      opacity: .7;
+    }
+  }
+  > .ctnWrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    > .menu {
+      min-width: 320px;
+      text-align: right;
+    }
+  }
+  .nav-menu {
+    font-family: BebasNeue;
+    font-size: 20px;
+    line-height: 24px;
+    color: #333;
+    margin-left: 24px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &.z-active {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -4px;
+        height: 2px;
+        background-color: #333;
+      }
+    }
+    @media screen and (max-width: 800px){
+      margin-left: 10px;
+      font-size: 18px;
+    }
+  }
+  .nav-icn {
+    margin-right: 20px;
+    line-height: 24px;
+  }
+}

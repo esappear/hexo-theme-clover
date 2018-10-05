@@ -1,0 +1,10 @@
+<% if (page.category) { %>
+  <% page.posts.each(function(post){ %>
+    <% var category = _.find(theme.menu, function (item) {
+      return item.path === '/categories/' + page.category;
+    }); %>
+    <%- partial('_partial/' + (category && category.card ? category.card : 'article-card'), { post: post }) %>
+  <% }) %>
+<% } else { %>
+  <%- partial('archive') %>
+<% } %>

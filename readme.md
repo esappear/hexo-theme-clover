@@ -1,0 +1,84 @@
+# Clover
+## Prerequisite
+You got a blog project built by ![Hexo](https://hexo.io). Your project directory should like this:
+```
+_config.yml  node_modules  package.json  public  scaffolds  source  themes
+```
+## Installation
+- Clone the repository.
+```
+git clone https://github.com/esappear/hexo-theme-clover themes/clover
+```
+- Set theme in `_config.yml` file of the project root:
+```
+theme: clover
+```
+- Add `hexo-renderer-sass`
+```
+npm install hexo-renderer-sass --save
+```
+## Features
+### Tags page.
+- Create a page named tags
+  ```
+  hexo new page "tags"
+  ```
+- Edit tags page, set page layout to `tag`.
+  ```
+  ---
+  layout: tag
+  title: tags
+  date: 2018-10-05 12:12:53
+  ---
+  ```
+### Categories page.
+- Create a page named categories
+  ```
+  hexo new page "categories"
+  ```
+- Edit categories page, set page layout to `category`.
+  ```
+  ---
+  layout: category
+  title: categories
+  date: 2018-10-05 12:12:53
+  ---
+  ```
+### About page.
+- Create a page named about
+  ```
+  hexo new page "about"
+  ```
+- Edit categories page, set page layout to `about`.
+  ```
+  ---
+  layout: about
+  title: about
+  date: 2018-10-05 12:12:53
+  ---
+  ```
+
+### Social Media
+```
+social:
+  GitHub: your-url
+  Dribbble: your-url
+  Behance: your-url
+  Lofter: your-url
+  Instagram: your-url
+```
+
+### Custom Menu
+You can specific the path or the card style (only useful for category page).
+Two kinds of card style: `project-card` and `article-card`. (Never mind the name.)
+```
+menu:
+  Project:
+    path: /categories/Projects
+    card: project-card
+  Stuffs:
+    path: /tags/Stuffs
+    card: article-card
+  Archive: /archives
+  About: /about
+```
