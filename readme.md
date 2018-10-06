@@ -33,27 +33,6 @@ home:
 ```
 Post which belongs to `category` or `tag` and don't belongs to `except_category` or `except_tag` will be filtered.
 
-### Filter layout
-With filter layout, you can also set posts of specific categories or tags in some custom page, just like home page.
-- Create a custom page
-```
-hexo new page "css"
-```
-- Set page layout to `filter`, and declare the filter configs.
-```
----
-layout: filter
-title: css_summary
-date: 2018-10-06 17:41:57
-filter:
-  category: summary
-  tag: css
-  except_category: Something
-  except_tag: 'someTag'
----
-```
-- Preview
-
 ### Page excerpt and photos
 You can set an excerpt or photos in `Front-matter`.
 ```
@@ -115,16 +94,20 @@ social:
 ```
 
 ### Custom Menu
-You can specify the path or the card style (only useful for category page).
-Two kinds of card style: `project-card` and `article-card`. (Never mind the name.)
 ```
 menu:
-  Project:
-    path: /categories/Projects
-    card: project-card
-  Stuffs:
-    path: /tags/Stuffs
-    card: article-card
+  Project: /
+  Stuffs: /tags/Stuffs
   Archive: /archives
   About: /about
+```
+
+### Card Style
+Two kinds of card style: `project-card` and `article-card`. (Never mind the name.)
+```
+card_style:
+  home: project-card
+  archive: article-card
+  tag: article-card
+  category: article-card
 ```
