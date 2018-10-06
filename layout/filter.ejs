@@ -1,15 +1,10 @@
-<% if (page.filter && (page.filter.category || page.filter.tag)) { %>
-  <% var filter_categories = _.isString(page.filter.category) ? [page.filter.category] : page.filter.category; %>
-  <% var filter_tags = _.isString(page.filter.tag) ? [page.filter.tag] : page.filter.tag; %>
-  <%- partial('_partial/filter', {
-    filter: function (post) {
-      return _.find(post.categories.data, function (category) {
-        return _.includes(filter_categories, category.name);
-      }) || _.find(post.tags.data, function (tag) {
-        return _.includes(filter_tags, tag.name);
-      });
-    },
-    card: page.card || 'project-card',
-    showAll: true, // 只能show all 了
+<% if (page.filter) { %>
+  <%- partial('_partial/post_filter', {
+    category: page.filter.category,
+    tag: page.filter.tag,
+    except_category: page.filter.except_category,
+    except_tag: page.filter.except_tag,
+    card: page.card,
+    showAll: true,
   }) %>
 <% } %>

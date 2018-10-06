@@ -28,7 +28,10 @@ home:
   tag:
     - js
     - css
+  except_category: Something
+  except_tag: 'someTag'
 ```
+Post which belongs to `category` or `tag` and don't belongs to `except_category` or `except_tag` will be filtered.
 
 ### Filter layout
 With filter layout, you can also set posts of specific categories or tags in some custom page, just like home page.
@@ -45,6 +48,8 @@ date: 2018-10-06 17:41:57
 filter:
   category: summary
   tag: css
+  except_category: Something
+  except_tag: 'someTag'
 ---
 ```
 - Preview
