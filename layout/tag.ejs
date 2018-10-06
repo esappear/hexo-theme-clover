@@ -5,6 +5,7 @@
     }); %>
     <%- partial('_partial/' + (theme.card_style.tag || 'article-card'), { post: post }) %>
   <% }) %>
+  <%- partial('_partial/pagination') %>
 <% } else { %>
   <section class="archive">
     <% site.tags.forEach(function (tag) { %>

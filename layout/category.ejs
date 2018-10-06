@@ -2,6 +2,7 @@
   <% page.posts.each(function(post){ %>
     <%- partial('_partial/' + (theme.card_style.category || 'article-card'), { post: post }) %>
   <% }) %>
+  <%- partial('_partial/pagination') %>
 <% } else { %>
   <section class="archive">
     <% site.categories.forEach(function (category) { %>
