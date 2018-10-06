@@ -3,7 +3,7 @@
     <% var tag = _.find(theme.menu, function (item) {
       return item.path === '/tags/' + page.tag;
     }); %>
-    <%- partial('_partial/' + (tag && tag.card ? tag.card : 'article-card'), { post: post }) %>
+    <%- partial('_partial/' + (theme.card_style.tag || 'article-card'), { post: post }) %>
   <% }) %>
 <% } else { %>
   <section class="archive">

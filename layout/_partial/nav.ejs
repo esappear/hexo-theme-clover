@@ -15,9 +15,7 @@
         <% _.forEach(theme.menu, function(value, key) {
           value = value.path || value;
           if (value) { %>
-            <a href="<%= value %>" class="nav-menu <%=
-              is_current(value) || (is_home(value) && value === ('/categories/' + theme.home_category)) ? 'z-active' : ''
-            %>"><%= key.toUpperCase() %></a>
+            <a href="<%= value %>" class="nav-menu <%= is_current(value) ? 'z-active' : '' %>"><%= key.toUpperCase() %></a>
           <% } %>
         <% }); %>
       <% } %>

@@ -1,37 +1,4 @@
-<section class="archive">
-  <% site.categories.forEach(function (category) { %>
-    <section class="archive-category">
-      <a class="title" href="/categories/<%= category.name %>"><%= category.name %></a>
-      <ul class="menu">
-        <% category.posts.forEach(function(item) { %>
-          <li>
-            <a href="<%- url_for(item.path) %>">
-              <span><%= item.title %></span>
-              <%- date(item.date, 'MMM D, YYYY') %>
-            </a>
-          </li>
-        <% }); %>
-      </ul>
-    </section>
-  <% }); %>
-  <% var others = site.posts.data.filter(function (item) {
-      return !item.categories.length;
-    }).sort(function (a, b) {
-      return b.date - a.date;
-    });%>
-  <% if (others && others.length) { %>
-    <section class="archive-category">
-      <h1 class="title">...</h1>
-      <ul class="menu">
-        <% others.forEach(function(item) { %>
-          <li>
-            <a href="<%- url_for(item.path) %>">
-              <span><%= item.title %></span>
-              <%- date(item.date, 'MMM D, YYYY') %>
-            </a>
-          </li>
-        <% }); %>
-      </ul>
-    </section>
-  <% } %>
-</section>
+<% page.posts.each(function(post){ %>
+  <%- partial('_partial/' + (theme.card_style.archive || 'article-card') , { post: post }) %>
+<% }) %>
+<%- partial('_partial/pagination') %>

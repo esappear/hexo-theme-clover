@@ -39,13 +39,18 @@ menu:
 # Post which belongs to `category` or `tag` and don't belongs to `except_category` or `except_tag` will be filtered.
 home:
   # set card style of home page
-  # card: project-card
   # category: Projects
-  # tag: 算法
+  tag: 算法
   # except_category: 树
   # except_tag:
   #   - 总结
   #   - css
+
+card_style:
+  home: project-card
+  archive: article-card
+  tag: article-card
+  category: article-card
 
 
 node_sass:

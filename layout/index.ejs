@@ -4,12 +4,12 @@
     tag: theme.home.tag,
     except_category: theme.home.except_category,
     except_tag: theme.home.except_tag,
-    card: theme.home.card,
+    card: theme.card_style.home,
     showAll: false,
   }) %>
 <% } else { %>
   <% page.posts.each(function(post){ %>
-    <%- partial('_partial/' + (theme.home && theme.home.card ? theme.home.card : 'project-card') , { post: post }) %>
+    <%- partial('_partial/' + (theme.card_style.home || 'project-card') , { post: post }) %>
   <% }) %>
   <%- partial('_partial/pagination') %>
 <% } %>
