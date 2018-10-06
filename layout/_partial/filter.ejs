@@ -1,0 +1,17 @@
+<% var totalPosts = site.posts.data.filter(filter).sort(function (a, b) {
+    return b.date - a.date;
+  });
+  var posts = page.current && !showAll ? totalPosts.slice(config.per_page * (page.current - 1), config.per_page * page.current) : totalPosts;
+%>
+<% posts.forEach(function (post) { %>
+  <%- partial('_partial/' + (card || 'project-card') , { post: post }) %>
+<% }); %>
+<% if (!showAll && totalPosts.length > config.per_page) { %>
+  <nav class="pagination">
+    <%- paginator({
+      total: Math.ceil(totalPosts.length / config.per_page),
+      prev_text: '<span class="iconfont icon-arrow-left"></span>',
+      next_text: '<span class="iconfont icon-arrow-right"></span>',
+    }) %>
+  </nav>
+<% } %>

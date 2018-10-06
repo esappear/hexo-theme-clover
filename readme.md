@@ -18,6 +18,37 @@ theme: clover
 npm install hexo-renderer-sass --save
 ```
 ## Features
+### Free home page.
+You can set posts of specific categories or tags in home page.
+```
+home:
+  # set card style of home page
+  # card: project-card
+  category: Projects
+  tag:
+    - js
+    - css
+```
+
+### Filter layout
+With filter layout, you can also set posts of specific categories or tags in some custom page, just like home page.
+- Create a custom page
+```
+hexo new page "css"
+```
+- Set page layout to `filter`, and declare the filter configs.
+```
+---
+layout: filter
+title: css_summary
+date: 2018-10-06 17:41:57
+filter:
+  category: summary
+  tag: css
+---
+```
+- Preview
+
 ### Page excerpt and photos
 You can set an excerpt or photos in `Front-matter`.
 ```
@@ -79,7 +110,7 @@ social:
 ```
 
 ### Custom Menu
-You can specific the path or the card style (only useful for category page).
+You can specify the path or the card style (only useful for category page).
 Two kinds of card style: `project-card` and `article-card`. (Never mind the name.)
 ```
 menu:

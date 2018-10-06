@@ -1,0 +1,14 @@
+.pagination {
+  padding: 20px;
+  background-color: white;
+  text-align: center;
+  > .prev, > .next {
+    margin: 0 10px;
+  }
+  > .page-number {
+    margin: 0 10px;
+    &.current {
+      text-decoration: underline;
+    }
+  }
+}

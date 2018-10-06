@@ -1,5 +1,20 @@
-<% page.posts.each(function(post){ %>
-  <% if (!theme.home_category || (post.categories.data.length && theme.home_category === post.categories.data[0].name)) { %>
-    <%- partial('_partial/project-card', { post: post }) %>
-  <% } %>
-<% }) %>
+<% if (theme.home && (theme.home.category || theme.home.tag)) { %>
+  <% var home_categories = _.isString(theme.home.category) ? [theme.home.category] : theme.home.category; %>
+  <% var home_tags = _.isString(theme.home.tag) ? [theme.home.tag] : theme.home.tag; %>
+  <%- partial('_partial/filter', {
+    filter: function (post) {
+      return _.find(post.categories.data, function (category) {
+        return _.includes(home_categories, category.name);
+      }) || _.find(post.tags.data, function (tag) {
+        return _.includes(home_tags, tag.name);
+      });
+    },
+    card: theme.home && theme.home.card ? theme.home.card : 'project-card',
+    showAll: false,
+  }) %>
+<% } else { %>
+  <% page.posts.each(function(post){ %>
+    <%- partial('_partial/' + (theme.home && theme.home.card ? theme.home.card : 'project-card') , { post: post }) %>
+  <% }) %>
+  <%- partial('_partial/pagination') %>
+<% } %>

@@ -35,8 +35,15 @@ menu:
   Archive: /archives
   About: /about
 
-# Specific a default category of the index page.
-# home_category: Projects
+# Specific default categories or tags of home page.
+home:
+  # set card style of home page
+  # card: project-card
+  category: Projects
+  tag:
+    - 总结
+    - css
+
 
 node_sass:
   outputStyle: nested
