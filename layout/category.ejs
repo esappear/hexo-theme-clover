@@ -3,23 +3,36 @@
     <%- partial('_partial/' + (theme.card_style.category || 'article-card'), { post: post }) %>
   <% }) %>
 <% } else { %>
+  <% 
+    var CLOVER_OTHERS = '__CLOVER_OTHERS';
+    var totalPosts = _.orderBy(site.posts.data, function (post) {
+      return post.categories.data[0] ? post.categories.data[0].name : CLOVER_OTHERS;
+    }, 'asc');
+    var posts = page.current ? totalPosts.slice(config.per_page * (page.current - 1), config.per_page * page.current) : totalPosts;
+    var groupPosts = _.groupBy(posts, function (post) {
+      return post.categories.data[0] ? post.categories.data[0].name : CLOVER_OTHERS;
+    });
+    groupPosts = _.reduce(groupPosts, function (result, posts, category) {
+      return result.concat({
+        posts: _.orderBy(posts, function (post) {
+          return post.date;
+        }, 'desc'),
+        category: category,
+      })
+    }, []);
+    groupPosts = _.orderBy(groupPosts, 'category', 'asc');
+  %>
   <section class="archive">
-    <% var postPerCategory = theme.category_generator.post_per_category; %>
-    <% page.posts.each(function (category) { %>
+    <% _.forEach(groupPosts, function (group) { %>
       <section class="archive-category">
-        <a class="title" href="/categories/<%- path_url(category.name) %>"><%= category.name %></a>
+        <h1 class="title"><%= group.category === CLOVER_OTHERS ? __('other_category') : group.category %></h1>
         <ul class="menu">
-          <% category.posts.slice(0, postPerCategory).each(function(item) { %>
+          <% _.forEach(group.posts, function(item) { %>
             <li>
               <a href="<%- url_for(item.path) %>"><%= item.title %></a>
               <span class="date"><%- date(item.date, 'MMM D, YYYY') %></span>
             </li>
           <% }); %>
-          <% if (category.posts.length > postPerCategory) { %>
-            <li>
-              <a href="/categories/<%- path_url(category.name) %>">...</a>
-            </li>
-          <% } %>
         </ul>
       </section>
     <% }); %>

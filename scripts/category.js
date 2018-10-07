@@ -11,7 +11,6 @@ hexo.config.category_generator = assign({
 hexo.extend.generator.register('category', function(locals){
   var config = this.config;
   var perPage = config.category_generator.per_page;
-  var categoryPerPage = this.theme.config.category_generator.category_per_page || 5;
   var paginationDir = config.pagination_dir || 'page';
  
   // var totalPosts = locals.posts.sort(config.category_generator.order_by || '-date');
@@ -34,8 +33,8 @@ hexo.extend.generator.register('category', function(locals){
     });
 
     return result.concat(data);
-  }, []).concat(pagination(rootPath, locals.categories.sort('name'), {
-    perPage: categoryPerPage,
+  }, []).concat(pagination(rootPath, locals.posts.sort(config.category_generator.order_by || '-date'), {
+    perPage: perPage,
     layout: ['category', 'archive', 'index'],
     format: paginationDir + '/%d/',
     data: {
