@@ -7,21 +7,14 @@
   <% }) %>
   <%- partial('_partial/pagination') %>
 <% } else { %>
-  <section class="archive">
-    <% site.tags.forEach(function (tag) { %>
-      <section class="archive-category">
-        <a class="title" href="/tags/<%= tag.name %>"><%= tag.name %></a>
-        <ul class="menu">
-          <% tag.posts.forEach(function(item) { %>
-            <li>
-              <a href="<%- url_for(item.path) %>">
-                <span><%= item.title %></span>
-                <%- date(item.date, 'MMM D, YYYY') %>
-              </a>
-            </li>
-          <% }); %>
-        </ul>
-      </section>
-    <% }); %>
+  <section class="tagcloud">
+    <%- tagcloud({
+    min_font: 12, 
+    max_font: 30, 
+    amount: 300, 
+    color: true, 
+    start_color: '#aaa', 
+    end_color: '#333',
+    }) %>
   </section>
 <% } %>
