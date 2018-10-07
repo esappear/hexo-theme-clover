@@ -2,14 +2,14 @@
   <% page.posts.each(function(post){ %>
     <%- partial('_partial/' + (theme.card_style.category || 'article-card'), { post: post }) %>
   <% }) %>
-  <%- partial('_partial/pagination') %>
 <% } else { %>
   <section class="archive">
-    <% site.categories.forEach(function (category) { %>
+    <% var postPerCategory = theme.category_generator.post_per_category; %>
+    <% page.posts.each(function (category) { %>
       <section class="archive-category">
-        <a class="title" href="/categories/<%= category.name %>"><%= category.name %></a>
+        <a class="title" href="/categories/<%- path_url(category.name) %>"><%= category.name %></a>
         <ul class="menu">
-          <% category.posts.forEach(function(item) { %>
+          <% category.posts.slice(0, postPerCategory).each(function(item) { %>
             <li>
               <a href="<%- url_for(item.path) %>">
                 <span><%= item.title %></span>
@@ -17,28 +17,14 @@
               </a>
             </li>
           <% }); %>
+          <% if (category.posts.length > postPerCategory) { %>
+            <li>
+              <a href="/categories/<%- path_url(category.name) %>">...</a>
+            </li>
+          <% } %>
         </ul>
       </section>
     <% }); %>
-    <% var others = site.posts.data.filter(function (item) {
-        return !item.categories.length;
-      }).sort(function (a, b) {
-        return b.date - a.date;
-      });%>
-    <% if (others && others.length) { %>
-      <section class="archive-category">
-        <h1 class="title">...</h1>
-        <ul class="menu">
-          <% others.forEach(function(item) { %>
-            <li>
-              <a href="<%- url_for(item.path) %>">
-                <span><%= item.title %></span>
-                <%- date(item.date, 'MMM D, YYYY') %>
-              </a>
-            </li>
-          <% }); %>
-        </ul>
-      </section>
-    <% } %>
   </section>
 <% } %>
+<%- partial('_partial/pagination') %>

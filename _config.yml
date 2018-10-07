@@ -52,6 +52,10 @@ card_style:
   tag: article-card
   category: article-card
 
+# category page
+category_generator:
+  category_per_page: 3
+  post_per_category: 3
 
 node_sass:
   outputStyle: nested
