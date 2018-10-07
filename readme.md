@@ -69,6 +69,12 @@ photos: [my_photo_url]
   date: 2018-10-05 12:12:53
   ---
   ```
+- Edit categories config (category root page)
+  ```
+  category_generator:
+    category_per_page: 3
+    post_per_category: 3
+  ```
 ### About page.
 - Create a page named about
   ```
