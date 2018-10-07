@@ -40,7 +40,7 @@ menu:
 home:
   # set card style of home page
   # category: Projects
-  tag: 算法
+  # tag: 算法
   # except_category: 树
   # except_tag:
   #   - 总结

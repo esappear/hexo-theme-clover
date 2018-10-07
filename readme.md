@@ -1,6 +1,6 @@
 # Clover
 ## Prerequisite
-You got a blog project built by ![Hexo](https://hexo.io). Your project directory should like this:
+You got a blog project built by [Hexo](https://hexo.io). Your project directory should like this:
 ```
 _config.yml  node_modules  package.json  public  scaffolds  source  themes
 ```
