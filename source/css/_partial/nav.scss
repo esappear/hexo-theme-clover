@@ -16,7 +16,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     > .menu {
-      min-width: 320px;
+      // min-width: 320px;
       text-align: right;
     }
   }
@@ -49,5 +49,14 @@
   .nav-icn {
     margin-right: 20px;
     line-height: 24px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  @media screen and (max-width: 400px){
+    text-align: center;
+    > .ctnWrap {
+      justify-content: space-around;
+    }
   }
 }
