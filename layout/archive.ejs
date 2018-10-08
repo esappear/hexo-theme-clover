@@ -1,8 +1,6 @@
 <section class="archive">
   <% 
-  var totalPosts = _.orderBy(site.posts.data, 'date', 'desc');
-  var posts = page.current ? totalPosts.slice(config.per_page * (page.current - 1), config.per_page * page.current) : totalPosts;
-  var groupPosts = _.groupBy(posts, function (post) {
+  var groupPosts = _.groupBy(page.posts.data, function (post) {
     return post.date.format('YYYY');
   });
   groupPosts = _.reduce(groupPosts, function (result, posts, year) {
