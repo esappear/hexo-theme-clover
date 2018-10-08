@@ -1,15 +1,4 @@
-<% if (theme.home) { %>
-  <%- partial('_partial/post_filter', {
-    category: theme.home.category,
-    tag: theme.home.tag,
-    except_category: theme.home.except_category,
-    except_tag: theme.home.except_tag,
-    card: theme.card_style.home,
-    showAll: false,
-  }) %>
-<% } else { %>
-  <% page.posts.each(function(post){ %>
-    <%- partial('_partial/' + (theme.card_style.home || 'project-card') , { post: post }) %>
-  <% }) %>
-  <%- partial('_partial/pagination') %>
-<% } %>
+<% page.posts.each(function(post){ %>
+  <%- partial('_partial/' + (theme.card_style.home || 'project-card') , { post: post }) %>
+<% }) %>
+<%- partial('_partial/pagination') %>
