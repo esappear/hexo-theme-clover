@@ -1,1 +1,8 @@
+categories: Categories
+tags: Tags
+archive_a: Archives
+archive_b: "Archives: %s"
+page: Page %d
+category: Category
+tag: Tag
 other_category: Others
