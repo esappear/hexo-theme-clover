@@ -1,14 +1,15 @@
 #nav {
   margin-bottom: 64px;
-  > .title {
-    display: block;
+  > .header {
     margin-bottom: 25px;
-    font-size: 40px;
-    line-height: 53px;
-    color: #333;
-    font-family: MaturaScriptCapitals;
-    &:hover {
-      opacity: .7;
+    > .title {
+      font-size: 40px;
+      line-height: 53px;
+      color: #333;
+      font-family: MaturaScriptCapitals;
+      &:hover {
+        opacity: .7;
+      }
     }
   }
   > .ctnWrap {

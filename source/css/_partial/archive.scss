@@ -19,9 +19,9 @@
       font-size: 16px;
       line-height: 30px;
       display: flex;
+      justify-content: space-between;
       line-height: 30px;
       > a {
-        flex: 1;
         &:hover {
           opacity: 1;
           color: #f0534e;
@@ -30,6 +30,8 @@
       > span {
         opacity: .45;
         font-size: 14px;
+        min-width: 90px;
+        text-align: right;
       }
     }
   }

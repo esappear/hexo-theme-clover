@@ -22,6 +22,10 @@
       font-weight: 600;
       font-size: 28px;
       line-height: 40px;
+      &:hover {
+        opacity: 1;
+        color: #f0534e;
+      }
     }
     > .desc {
       font-size: 16px;
@@ -33,14 +37,6 @@
       font-size: 16px;
       line-height: 30px;
       opacity: .5;
-    }
-  }
-  &:hover {
-    opacity: 1;
-    > .ctnWrap {
-      > .title {
-        color: #f0534e;
-      }
     }
   }
   &.project-card-continuous {

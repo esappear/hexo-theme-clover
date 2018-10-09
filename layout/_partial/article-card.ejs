@@ -1,12 +1,12 @@
-<a href="<%- url_for(post.path) %>" class="project-card project-card-continuous">
+<div class="project-card project-card-continuous">
   <% if (post.photos[0]) { %>
     <div class="imgWrap">
       <img src="<%= post.photos[0] %>" alt="" />
     </div>
   <% } %>
   <div class="ctnWrap">
-    <h2 class="title"><%= post.title %></h2>
+    <a href="<%- url_for(post.path) %>" class="title"><%= post.title %></a>
     <section class="desc"><%- partial('excerpt', { post: post }) %></section>
     <p class="sub"><%- date(post.date, 'MMM D, YYYY') %></p>
   </div>
-</a>
+</div>
