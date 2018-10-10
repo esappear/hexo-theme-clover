@@ -19,7 +19,7 @@ $brand-color: #f0534e;
   > .content {
     padding-bottom: 64px;
     h1, h2, h3, h4, h5 {
-      font-size:20px;
+      font-size:23px;
       font-weight: 600;
       margin-bottom: 15px;
     }
@@ -50,8 +50,9 @@ $brand-color: #f0534e;
 
     ul, ol {
       margin: 15px 0;
+      margin-left:15px;
       > li {
-        padding-left: 30px;
+        padding-left: 20px;
         position: relative;
         &::before {
           content: '';
@@ -73,6 +74,7 @@ $brand-color: #f0534e;
     strong {
       font-weight: 600;
     }
+
 
     figure > img {
       display: block;
