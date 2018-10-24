@@ -20,6 +20,13 @@
       // min-width: 320px;
       text-align: right;
     }
+    @media screen and (max-width: 600px){
+      flex-direction: column;
+      > .menu {
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
   }
   .nav-menu {
     font-family: BebasNeue;
@@ -42,7 +49,7 @@
         background-color: #333;
       }
     }
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 600px){
       margin-left: 10px;
       font-size: 18px;
     }
@@ -54,8 +61,9 @@
       margin-right: 0;
     }
   }
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 600px){
     text-align: center;
+    margin-bottom: 20px;
     > .ctnWrap {
       justify-content: space-around;
     }

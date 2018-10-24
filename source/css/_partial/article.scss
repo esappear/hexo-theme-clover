@@ -108,9 +108,14 @@ $brand-color: #f0534e;
     > .link {
       font-size: 16px;
       line-height: 22px;
+      max-width: 50%;
     }
   }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 600px) {
     padding: 20px 20px 0;
+    margin: 20px 0;
+    > footer {
+      padding: 10px 0;
+    }
   }
 }

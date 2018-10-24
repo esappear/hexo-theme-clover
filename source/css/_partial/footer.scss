@@ -3,4 +3,15 @@
   font-size: 14px;
   line-height: 22px;
   opacity: 0.8;
+  .copyright {
+    float: right;
+  }
+  @media screen and (max-width: 800px){
+    margin-top: 20px;
+    text-align: center;
+    .copyright {
+      display: block;
+      float: none;
+    }
+  }
 }
