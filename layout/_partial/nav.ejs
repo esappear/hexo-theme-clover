@@ -7,7 +7,7 @@
       <% if (theme.social) { %>
         <% _.forEach(theme.social, function(value, key) { %>
           <% if (value) { %>
-            <a href="<%= value %>" target="_blank" class="nav-icn iconfont icon-<%= key.toLowerCase() %>"></a>
+            <a href="<%= url_for(value) %>" target="_blank" class="nav-icn iconfont icon-<%= key.toLowerCase() %>"></a>
           <% } %>
         <% }); %>
       <% } %>
@@ -17,7 +17,7 @@
         <% _.forEach(theme.menu, function(value, key) {
           value = value.path || value;
           if (value) { %>
-            <a href="<%= value %>" class="nav-menu <%= is_current(value) ? 'z-active' : '' %>"><%= key.toUpperCase() %></a>
+            <a href="<%= url_for(value) %>" class="nav-menu <%= is_current(value) ? 'z-active' : '' %>"><%= key.toUpperCase() %></a>
           <% } %>
         <% }); %>
       <% } %>
