@@ -114,3 +114,15 @@ card_style:
   tag: article-card
   category: article-card
 ```
+
+### Code Highlight
+- You should disable the default highlight setting in `.config.yml` and then get gihub-style code highlight powered by `hight.js`.
+```
+highlight:
+  enable: false
+```
+- declare language of code
+```md
+```js
+console.log('hello world);
+```
