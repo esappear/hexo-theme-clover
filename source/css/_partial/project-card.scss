@@ -8,12 +8,12 @@
   color: #333;
   > .imgWrap {
     width: 320px;
-    height: 240px;
     margin-right: 40px;
     background-color: #f8f8f8;
     > img {
       width: 100%;
-      height: 100%;
+      height: auto;
+      display: block;
     }
   }
   > .ctnWrap {
