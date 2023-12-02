@@ -5,21 +5,22 @@
   <div class="ctnWrap">
     <div class="icons">
       <% if (theme.social) { %>
-        <% _.forEach(theme.social, function(value, key) { %>
+        <% for (key in theme.social) { %>
+          <% value = theme.social[key]; %>
           <% if (value) { %>
             <a href="<%= url_for(value) %>" target="_blank" class="nav-icn iconfont icon-<%= key.toLowerCase() %>"></a>
           <% } %>
-        <% }); %>
+        <% }; %>
       <% } %>
     </div>
     <div class="menu">
       <% if (theme.menu) { %>
-        <% _.forEach(theme.menu, function(value, key) {
-          value = value.path || value;
-          if (value) { %>
+        <% for (key in theme.menu) { %>
+          <% value = theme.menu[key].path || theme.menu[key]; %>
+          <% if (value) { %>
             <a href="<%= url_for(value) %>" class="nav-menu <%= is_current(value) ? 'z-active' : '' %>"><%= key.toUpperCase() %></a>
           <% } %>
-        <% }); %>
+        <% }; %>
       <% } %>
     </div>
   </div>

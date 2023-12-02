@@ -58,6 +58,5 @@ category_generator:
   post_per_category: 3
 
 node_sass:
-  outputStyle: nested
   precision: 5
   sourceComments: false
