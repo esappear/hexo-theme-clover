@@ -1,6 +1,6 @@
 <% if (page.tag) { %>
   <% page.posts.each(function(post){ %>
-    <% var tag = _.find(theme.menu, function (item) {
+    <% var tag = theme.menu.find(function (item) {
       return item.path === '/tags/' + page.tag;
     }); %>
     <%- partial('_partial/' + (theme.card_style.tag || 'article-card'), { post: post }) %>
