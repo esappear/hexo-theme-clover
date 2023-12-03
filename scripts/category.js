@@ -2,7 +2,7 @@
 
 var assign = require('object-assign');
 var pagination = require('hexo-pagination');
-var _ = require('lodash');
+// var _ = require('lodash');
 
 hexo.config.category_generator = assign({
   per_page: typeof hexo.config.per_page === "undefined" ? 10 : hexo.config.per_page
