@@ -1,10 +1,14 @@
 <section class="archive">
-  <% const sortByAsc=(key)=> {return (a, b) => (key(a) > key(b)) ? 1 : ((key(b) > key(a)) ? -1 : 0);};
-    const sortByDesc = (key) => {return (a, b) => (key(a) > key(b)) ? -1 : ((key(b) > key(a)) ? 1 : 0);};
+  <% const sortByAsc=(key)=> {
+      return (a, b) => (key(a) > key(b)) ? 1 : ((key(b) > key(a)) ? -1 : 0);};
+    const sortByDesc = (key) => {
+      return (a, b) => (key(a) > key(b)) ? -1 : ((key(b) > key(a)) ? 1 : 0);};
+
     var groupPosts = page.posts.data.reduce(
       (r, v, i, a, k = (function (post) {
         return post.date.format('YYYY');
       })(v)) => ((r[k] || (r[k] = [])).push(v), r), {});
+
     result = [];
     for (year in groupPosts){
       posts = groupPosts[year];
@@ -14,8 +18,9 @@
         year: year,});
     }
     groupPosts = result;
+
     groupPosts = groupPosts.concat().sort(
-      sortByDesc(function (list) {return list['year'];}));
+      sortByDesc(function (item) {return item['year'];}));
     %>
     <% groupPosts.forEach(function (group) { %>
       <section class="archive-category">

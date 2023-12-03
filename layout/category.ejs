@@ -1,11 +1,14 @@
 <% if (page.category) { %>
-  <% page.posts.each(function(post){ %>
+  <% page.posts.each(function (post) { %>
     <%- partial('_partial/' + (theme.card_style.category || 'article-card'), { post: post }) %>
   <% }) %>
 <% } else { %>
   <% 
-    const sortByAsc=(key)=> {return (a, b) => (key(a) > key(b)) ? 1 : ((key(b) > key(a)) ? -1 : 0);};
-    const sortByDesc = (key) => {return (a, b) => (key(a) > key(b)) ? -1 : ((key(b) > key(a)) ? 1 : 0);};
+    const sortByAsc=(key)=> {
+      return (a, b) => (key(a) > key(b)) ? 1 : ((key(b) > key(a)) ? -1 : 0);};
+    const sortByDesc = (key) => {
+      return (a, b) => (key(a) > key(b)) ? -1 : ((key(b) > key(a)) ? 1 : 0);};
+
     var CLOVER_OTHERS = '__CLOVER_OTHERS';
     var totalPosts = site.posts.data.concat().sort(
       sortByAsc(function (post) {
@@ -16,6 +19,7 @@
       (r, v, i, a, k = (function (post) {
         return post.categories.data[0] ? post.categories.data[0].name : CLOVER_OTHERS;
       })(v)) => ((r[k] || (r[k] = [])).push(v), r), {});
+
     result = [];
     for (category in groupPosts){
       posts = groupPosts[category];
@@ -25,8 +29,9 @@
         category: category,});
     }
     groupPosts = result;
+
     groupPosts = groupPosts.concat().sort(
-      sortByAsc(function (list) {return list['category'];}));
+      sortByAsc(function (item) {return item['category'];}));
   %>
   <section class="archive">
     <% groupPosts.forEach(function (group) { %>
