@@ -1,30 +1,43 @@
 <section class="archive">
-  <% 
-  var groupPosts = _.groupBy(page.posts.data, function (post) {
-    return post.date.format('YYYY');
-  });
-  groupPosts = _.reduce(groupPosts, function (result, posts, year) {
-    return result.concat({
-      posts: _.orderBy(posts, function (post) {
-        return post.date;
-      }, 'desc'),
-      year: year,
-    })
-  }, []);
-  groupPosts = _.orderBy(groupPosts, 'year', 'desc');
-  %>
-  <% _.forEach(groupPosts, function (group) { %>
-    <section class="archive-category">
-      <h1 class="title"><%= group.year %></h1>
-      <ul class="menu">
-        <% _.forEach(group.posts, function(item) { %>
-          <li>
-            <a href="<%- url_for(item.path) %>"><%= item.title %></a>
-            <span class="date"><%- date(item.date, 'MMM D, YYYY') %></span>
-          </li>
-        <% }); %>
-      </ul>
-    </section>
-  <% }); %>
+  <% const sortByAsc=(key)=> {
+      return (a, b) => (key(a) > key(b)) ? 1 : ((key(b) > key(a)) ? -1 : 0);};
+    const sortByDesc = (key) => {
+      return (a, b) => (key(a) > key(b)) ? -1 : ((key(b) > key(a)) ? 1 : 0);};
+
+    var groupPosts = page.posts.data.reduce(
+      (r, v, i, a, k = (function (post) {
+        return post.date.format('YYYY');
+      })(v)) => ((r[k] || (r[k] = [])).push(v), r), {});
+
+    result = [];
+    for (year in groupPosts){
+      posts = groupPosts[year];
+      result = result.concat({
+        posts: posts.concat().sort(
+          sortByDesc(function (post) {return post.date})),
+        year: year,});
+    }
+    groupPosts = result;
+
+    groupPosts = groupPosts.concat().sort(
+      sortByDesc(function (item) {return item['year'];}));
+    %>
+    <% groupPosts.forEach(function (group) { %>
+      <section class="archive-category">
+        <h1 class="title">
+          <%= group.year %>
+        </h1>
+        <ul class="menu">
+          <% group.posts.forEach(function (item) { %>
+            <li>
+              <a href="<%- url_for(item.path) %>">
+                <%= item.title %>
+              </a>
+              <span class="date"><%- date(item.date, 'MMM D, YYYY' ) %></span>
+            </li>
+          <% }); %>
+        </ul>
+      </section>
+    <% }); %>
 </section>
 <%- partial('_partial/pagination') %>

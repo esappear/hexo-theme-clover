@@ -1,33 +1,44 @@
 <% if (page.category) { %>
-  <% page.posts.each(function(post){ %>
+  <% page.posts.each(function (post) { %>
     <%- partial('_partial/' + (theme.card_style.category || 'article-card'), { post: post }) %>
   <% }) %>
 <% } else { %>
   <% 
+    const sortByAsc=(key)=> {
+      return (a, b) => (key(a) > key(b)) ? 1 : ((key(b) > key(a)) ? -1 : 0);};
+    const sortByDesc = (key) => {
+      return (a, b) => (key(a) > key(b)) ? -1 : ((key(b) > key(a)) ? 1 : 0);};
+
     var CLOVER_OTHERS = '__CLOVER_OTHERS';
-    var totalPosts = _.orderBy(site.posts.data, function (post) {
-      return post.categories.data[0] ? post.categories.data[0].name : CLOVER_OTHERS;
-    }, 'asc');
-    var posts = page.current ? totalPosts.slice(config.per_page * (page.current - 1), config.per_page * page.current) : totalPosts;
-    var groupPosts = _.groupBy(posts, function (post) {
-      return post.categories.data[0] ? post.categories.data[0].name : CLOVER_OTHERS;
-    });
-    groupPosts = _.reduce(groupPosts, function (result, posts, category) {
-      return result.concat({
-        posts: _.orderBy(posts, function (post) {
-          return post.date;
-        }, 'desc'),
-        category: category,
-      })
-    }, []);
-    groupPosts = _.orderBy(groupPosts, 'category', 'asc');
+    var totalPosts = site.posts.data.concat().sort(
+      sortByAsc(function (post) {
+        return post.categories.data[0] ? post.categories.data[0].name : CLOVER_OTHERS;}));
+    var posts = page.current ? totalPosts.slice(
+      config.per_page * (page.current - 1), config.per_page * page.current) : totalPosts;
+    var groupPosts = posts.reduce(
+      (r, v, i, a, k = (function (post) {
+        return post.categories.data[0] ? post.categories.data[0].name : CLOVER_OTHERS;
+      })(v)) => ((r[k] || (r[k] = [])).push(v), r), {});
+
+    result = [];
+    for (category in groupPosts){
+      posts = groupPosts[category];
+      result = result.concat({
+        posts: posts.concat().sort(
+          sortByDesc(function (post) {return post.date;})),
+        category: category,});
+    }
+    groupPosts = result;
+
+    groupPosts = groupPosts.concat().sort(
+      sortByAsc(function (item) {return item['category'];}));
   %>
   <section class="archive">
-    <% _.forEach(groupPosts, function (group) { %>
+    <% groupPosts.forEach(function (group) { %>
       <section class="archive-category">
         <h1 class="title"><%= group.category === CLOVER_OTHERS ? __('other_category') : group.category %></h1>
         <ul class="menu">
-          <% _.forEach(group.posts, function(item) { %>
+          <% group.posts.forEach(function (item) { %>
             <li>
               <a href="<%- url_for(item.path) %>"><%= item.title %></a>
               <span class="date"><%- date(item.date, 'MMM D, YYYY') %></span>
